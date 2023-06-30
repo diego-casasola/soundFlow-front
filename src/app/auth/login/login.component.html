@@ -1,0 +1,31 @@
+<div class="login-container" fxLayout="column" fxLayoutAlign="center center">
+    <mat-card class="login-card">
+        <div class="login-form">
+            <div class="login-title">
+                <h2>Iniciar Sesión</h2>
+            </div>
+            <form [formGroup]="loginForm" fxLayout="column" fxLayoutAlign="space-evenly none">
+                <mat-form-field appearance="outline">
+                    <mat-label>Nombre de Usuario</mat-label>
+                    <input matInput placeholder="Nombre de Usuario" formControlName="username">
+                    <mat-icon mat-icon-button matSuffix>account_circle</mat-icon>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Contraseña</mat-label>
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" />
+                    <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide">
+                        <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+                    </button>
+                </mat-form-field>
+                <button mat-raised-button [disabled]="loginForm.invalid" type="button" (click)="login()"
+                    color="primary">
+                    Iniciar Sesión
+                </button>
+            </form>
+            <div class="login-footer">
+                <span>¿Aun no tienes una cuenta? <a [routerLink]="['/auth/register']">Regístrate</a></span>
+            </div>
+        </div>
+    </mat-card>
+</div>

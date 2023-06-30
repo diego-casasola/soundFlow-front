@@ -1,0 +1,59 @@
+.register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #d8e0ee;
+}
+
+.register-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    max-width: 100%;
+}
+
+.register-form {
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+}
+
+.register-title {
+    margin-bottom: 20px;
+}
+
+.register-footer {
+    margin-top: 20px;
+}
+
+/* Estilos para los errores de validación */
+.mat-form-field-invalid .mat-form-field-wrapper {
+    border-color: #ff0000;
+}
+
+.mat-form-field-invalid .mat-form-field-label {
+    color: #ff0000;
+}
+
+.mat-form-field-invalid .mat-input-element {
+    color: #ff0000;
+}
+
+.mat-form-field-invalid.mat-focused .mat-form-field-label {
+    color: #ff0000;
+}
+
+.mat-form-field-invalid.mat-focused .mat-form-field-underline {
+    background-color: #ff0000;
+}
+
+.mat-form-field-invalid .mat-form-field-ripple {
+    background-color: #ff0000;
+}
