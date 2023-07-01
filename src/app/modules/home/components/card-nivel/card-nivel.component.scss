@@ -1,0 +1,14 @@
+.custom-card {
+    max-width: 300px;
+    margin: auto;
+}
+
+.nivel-card.disabled {
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.5;
+}
+
+.nivel-card {
+    text-decoration: none;
+}

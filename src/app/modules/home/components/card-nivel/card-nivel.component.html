@@ -1,0 +1,15 @@
+<a [routerLink]="nivel.habilitado ? ['/home/niveles/',nivel.id,'desafios'] : null" class="card mb-3 nivel-card" [ngClass]="{'disabled': !nivel.habilitado}">
+    <div class="row g-0">
+      <div style="font-weight: bold; font-size: 20px;" class="card-header">Nivel {{nivel.nivel}}</div>
+      <div class="col-md-4">
+        <img src="{{nivel.imagen}}" class="img-fluid rounded-start" alt="...">
+      </div>
+      <div class="col-md-8 d-flex m-auto">
+        <div class="card-body">
+          <h3 style="font-weight: bold;" class="card-title">{{nivel.nombre}}</h3>
+          <p class="card-text">{{nivel.descripcion}}</p>
+        </div>
+      </div>
+    </div>
+  </a>
+  

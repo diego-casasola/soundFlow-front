@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CurrentUserResolver } from '../shared/resolvers/current-user.resolver';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { PrincipalComponent } from './principal/principal.component';
+import { PrincipalComponent } from './home/principal/principal.component';
 
 const routes: Routes = [
   {

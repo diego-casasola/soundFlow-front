@@ -1,0 +1,25 @@
+<mat-card>
+    <mat-card-content>
+        <h2 class="example-h2">Bienvenido {{user.first_name}} {{ user.last_name}} </h2>
+        <div class="d-flex justify-content-evenly align-items-center">
+            <div class="containerXp">
+                <div class="progress">
+                    <div class="progress-bar" role="progressbar" [style.width]="calcularPorcentajeXp()"
+                        [attr.aria-valuenow]="user.xp" aria-valuemin="0" [attr.aria-valuemax]="maxXp"></div>
+
+                </div>
+                <p class="xp-text">Experiencia: <strong>{{user.xp}}</strong></p>
+            </div>
+            <div class="containerEnergia">
+                <div class="center-content">
+                    <div class="progress-wrapper">
+                        <mat-progress-spinner class="example-margin" [color]="calcularColorEnergia()"
+                            [mode]="modeEnergia" [value]="calcularEnergia()"></mat-progress-spinner>
+                        <div class="progress-label"><strong>{{ calcularEnergia() }}%</strong></div>
+                    </div>
+                    <p class="energy-text">Energia: <strong>{{user.energia}}</strong></p>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
