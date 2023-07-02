@@ -1,12 +1,10 @@
-<a [routerLink]="(desafio.habilitado && user.energia >= desafio.min_energia) ? ['/home/niveles/',nivel_id,'desafios',desafio.id] : null"
-    class="card mb-3 desafio-card" [ngClass]="{'disabled': !desafio.habilitado || (desafio.habilitado && user.energia < desafio.min_energia),
-    'disabled-link': !desafio.habilitado,
-    'enabled-link': desafio.habilitado && user.energia >= desafio.min_energia}" (click)="openSwalPopup(desafio)">
-    <div class="row g-0">
-        <div class="d-flex m-auto justify-content-center align-items-center" style="width: 100%; height: 100%;">
-            <div class="card-body">
-                <span style="font-weight: bold;" class="card-title">Desafio {{index+1}} - {{desafio.nombre}}</span>
-            </div>
-        </div>
-    </div>
+<a [routerLink]="getDesafioRouterLink(desafio)" class="card mb-3 desafio-card" [ngClass]="getDesafioLinkClasses(desafio)"
+   (click)="openSwalPopup(desafio)">
+   <div class="row g-0">
+       <div class="d-flex m-auto justify-content-center align-items-center" style="width: 100%; height: 100%;">
+           <div class="card-body">
+               <span style="font-weight: bold;" class="card-title">Desafio {{index+1}} - {{desafio.nombre}}</span>
+           </div>
+       </div>
+   </div>
 </a>

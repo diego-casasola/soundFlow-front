@@ -4,6 +4,7 @@ import { NivelesComponent } from './game/niveles/niveles.component';
 import { PermissionGuard } from 'src/app/shared/guards/permission.guard';
 import { DesafiosComponent } from './game/desafios/desafios.component';
 import { ShownivelComponent } from './game/shownivel/shownivel.component';
+import { PruebasModule } from '../pruebas/pruebas.module';
 
 const routes: Routes = [
   {
@@ -24,7 +25,7 @@ const routes: Routes = [
   {
     path:'niveles/:id/desafios/:id',
     canActivate: [PermissionGuard],
-    component: DesafiosComponent
+    loadChildren: () => import('../pruebas/pruebas.module').then(m => m.PruebasModule)
   }
 
 ];

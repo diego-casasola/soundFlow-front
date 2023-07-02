@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { ToneService } from 'src/app/modules/services/tone.service';
 import { Desafio, DesafioUser } from 'src/app/shared/interfaces/desafio.interface';
 import Swal from 'sweetalert2';
 
@@ -19,13 +20,34 @@ export class CardDesafioComponent implements OnInit {
   constructor(
     private authService: AuthService,
     private activatedRoute: ActivatedRoute,
+    private toneService: ToneService
   ) { }
 
   ngOnInit(): void {
   }
 
+  getDesafioRouterLink(desafio: any): string[] | null {
+    if (desafio.habilitado && this.user.energia >= desafio.min_energia) {
+      return ['/home/niveles/', this.nivel_id, 'desafios', desafio.id];
+    } else {
+      return null;
+    }
+  }
+  
+  getDesafioLinkClasses(desafio: any): string {
+    if (!desafio.habilitado || (desafio.habilitado && this.user.energia < desafio.min_energia)) {
+      return 'disabled disabled-link';
+    } else if (desafio.habilitado && this.user.energia >= desafio.min_energia) {
+      return 'enabled-link';
+    } else {
+      return '';
+    }
+  }
+  
+
   openSwalPopup(nivel: DesafioUser) {
     if (this.authService.currentUser.energia < this.desafio.min_energia) {
+      this.toneService.errorSoundTwo();
       Swal.fire({
         title: 'Energía insuficiente',
         text: 'Juega los desafios en el Dashboard para obtener más energía',
@@ -40,6 +62,7 @@ export class CardDesafioComponent implements OnInit {
     }
 
     if (!nivel.habilitado) {
+      this.toneService.errorSoundTwo();
       Swal.fire({
         title: 'Nivel no habilitado',
         text: 'Sigue jugando para habilitar este nivel',

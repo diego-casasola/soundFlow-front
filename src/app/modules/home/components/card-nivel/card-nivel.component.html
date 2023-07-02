@@ -1,5 +1,5 @@
-<a [routerLink]="nivel.habilitado ? ['/home/niveles/',nivel.id,'desafios'] : null" class="card mb-3 nivel-card"
-  [ngClass]="{'disabled': !nivel.habilitado}" (click)="openSwalPopup(nivel)">
+<a [routerLink]="getNivelRouterLink(nivel)" class="card mb-3 nivel-card" [ngClass]="getNivelLinkClasses(nivel)"
+  (click)="openSwalPopup(nivel)">
   <div class="row g-0">
     <div style="font-weight: bold; font-size: 20px;" class="card-header">Nivel {{nivel.nivel}}</div>
     <div class="col-md-4">
