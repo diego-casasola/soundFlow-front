@@ -1,0 +1,37 @@
+.custom-card {
+    max-width: 300px;
+    margin: auto;
+}
+
+.desafio-card.disabled {
+    pointer-events: unset;
+    cursor: default;
+    opacity: 0.5;
+}
+
+.desafio-card {
+    text-decoration: none;
+}
+
+.disabled-link {
+    background-color: gray;
+    /* Color de fondo para el enlace deshabilitado */
+    pointer-events: none;
+    /* Desactiva la interacción con el enlace */
+    border: none;
+}
+
+.disabled-link:hover {
+    background-color: gray;
+    /* Color de fondo al pasar el mouse por encima del enlace deshabilitado */
+    color: aliceblue;
+}
+
+.enabled-link {
+    background-color: lightgreen;
+    /* Color de fondo para el enlace habilitado */
+}
+
+.enabled-link:hover {
+    color: black;
+  }

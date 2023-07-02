@@ -4,7 +4,7 @@
 }
 
 .nivel-card.disabled {
-    pointer-events: none;
+    pointer-events: unset;
     cursor: default;
     opacity: 0.5;
 }

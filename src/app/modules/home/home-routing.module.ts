@@ -20,6 +20,11 @@ const routes: Routes = [
     path:'niveles/:id/desafios',
     canActivate: [PermissionGuard],
     component: DesafiosComponent
+  },
+  {
+    path:'niveles/:id/desafios/:id',
+    canActivate: [PermissionGuard],
+    component: DesafiosComponent
   }
 
 ];

@@ -20,7 +20,7 @@ export class DesafioService {
   }
 
   getDesafiosUser(nivelId: number): Observable<Desafio[]> {
-    const url = `${this.baseUrl}/game/desafio/${nivelId}/get_desafios_habilitados_use/`;
+    const url = `${this.baseUrl}/game/desafio/${nivelId}/get_desafios_habilitados_user/`;
     return this.http.get<Desafio[]>(url);
   }
 }

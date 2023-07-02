@@ -9,6 +9,7 @@ import { CardNivelComponent } from './components/card-nivel/card-nivel.component
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { ShownivelComponent } from './game/shownivel/shownivel.component';
 import { StatusUserComponent } from './components/status-user/status-user.component';
+import { CardDesafioComponent } from './components/card-desafio/card-desafio.component';
 
 
 @NgModule({
@@ -17,6 +18,7 @@ import { StatusUserComponent } from './components/status-user/status-user.compon
     DesafiosComponent,
     CardNivelComponent,
     ShownivelComponent,
+    CardDesafioComponent,
   ],
   imports: [
     CommonModule,
