@@ -1,1 +1,27 @@
-<p>desafio2 works!</p>
+<div class="container" [formGroup]="formRespuesta">
+    <div formArrayName="prueba_res">
+        <div *ngFor="let item of respuestas().controls; let i = index">
+            <div [formGroupName]="i">
+                <div class="aux">
+                    <div class="escala-container" (click)="reproducirEscala(item.get('aux')?.value.nota)">
+                        Escala de: <span class="escala">{{ mapNotas(item.get('aux')?.value.nota) }}</span><mat-icon
+                            (click)="reproducirEscala(item.get('aux')?.value.nota)">volume_up</mat-icon>
+                    </div>
+                    <div cdkDropList cdkDropListOrientation="horizontal" class="example-list"
+                        (cdkDropListDropped)="drop($event, item.get('aux')?.value.desordenadas, i)">
+                        <div class="example-box" *ngFor="let nota of item.get('aux')?.value.desordenadas" cdkDrag
+                            (click)="reproducirNota(nota)">
+                            {{ mapNotas(nota) }}
+                        </div>
+                    </div>
+                    <div *ngIf="submitted && item.get('respuesta')?.value && verificarRespuesta(item)"
+                        class="response-indicator correct">Correcta</div>
+                    <div *ngIf="submitted && item.get('respuesta')?.value && !verificarRespuesta(item)"
+                        class="response-indicator incorrect">Incorrecta</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" type="submit" class="submit-button" (click)="enviarRespuestas()"
+        [disabled]="respuestas().invalid">Enviar respuestas</button>
+</div>

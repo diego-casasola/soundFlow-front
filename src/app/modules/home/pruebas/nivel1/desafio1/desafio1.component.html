@@ -1,1 +1,15 @@
-<p>desafio1 works!</p>
+<form [formGroup]="formRespuesta" (ngSubmit)="enviarRespuestas()" class="four-cols-form container">
+  <div class="questions-container" formArrayName="prueba_res">
+    <div *ngFor="let respuestaCtrl of respuestas().controls; let i = index" class="question-container">
+      <div [formGroupName]="i" class="question-wrapper">
+        <div class="question">{{ respuestaCtrl.get('pregunta')?.value }}</div>
+        <mat-form-field appearance="outline" class="answer-field">
+          <input matInput formControlName="respuesta" placeholder="Inserta la respuesta">
+        </mat-form-field>
+        <div *ngIf="submitted && respuestaCtrl.get('respuesta')?.value && verificarRespuesta(respuestaCtrl)" class="response-indicator correct">Correcta</div>
+        <div *ngIf="submitted && respuestaCtrl.get('respuesta')?.value && !verificarRespuesta(respuestaCtrl)" class="response-indicator incorrect">Incorrecta</div>
+      </div>
+    </div>
+  </div>
+  <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="!allInputsFilled()">Enviar respuestas</button>
+</form>

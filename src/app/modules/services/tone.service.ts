@@ -65,4 +65,43 @@ export class ToneService {
     // Reproducir el sonido de clic
     synth.triggerAttackRelease(note, duration);
   }
+
+  reproducirNota(nota: string) {
+    const synth = new Tone.Synth().toDestination();
+    const notas: { [key: string]: string } = {
+      'son_do': 'C4',
+      'son_re': 'D4',
+      'son_mi': 'E4',
+      'son_fa': 'F4',
+      'son_sol': 'G4',
+      'son_la': 'A4',
+      'son_si': 'B4',
+      'son_do_sost': 'C#5',
+      'son_re_sost': 'D#5',
+      'son_fa_sost': 'F#4',
+      'son_sol_sost': 'G#4',
+      'son_la_sost': 'A#4',
+    };
+    synth.triggerAttackRelease(notas[nota], "8n");
+  }
+
+  reproducirEscala(escala: string) {
+    const synth = new Tone.Synth().toDestination();
+    const escalas: { [key: string]: string[] } = {
+      'son_do': ["C4", "D4", "E4", "F4", "G4", "A4", "B4"],
+      'son_re': ["D4", "E4", "F#4", "G4", "A4", "B4", "C#5"],
+      'son_mi': ["E4", "F#4", "G#4", "A4", "B4", "C#5", "D#5"],
+      'son_fa': ["F4", "G4", "A4", "A#4", "C5", "D5", "E5"],
+      'son_sol': ["G4", "A4", "B4", "C5", "D5", "E5", "F#5"],
+      'son_la': ["A4", "B4", "C#5", "D5", "E5", "F#5", "G#5"],
+      'son_si': ["B4", "C#5", "D#5", "E5", "F#5", "G#5", "A#5"],
+    };
+    const duration = "8n";
+    let time = Tone.now();
+
+    escalas[escala].forEach((nota, index) => {
+      synth.triggerAttackRelease(nota, duration, time);
+      time += Tone.Time(duration).toSeconds();
+    });
+  }
 }

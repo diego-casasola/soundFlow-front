@@ -7,6 +7,9 @@ import { MaterialModule } from '../material/material.module';
 import { SharedModule } from '../shared/shared.module';
 import { PrincipalComponent } from './home/principal/principal.component';
 import { StatusUserComponent } from './home/components/status-user/status-user.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../auth/interceptor/auth.interceptor';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -20,6 +23,14 @@ import { StatusUserComponent } from './home/components/status-user/status-user.c
     FlexLayoutModule,
     MaterialModule,
     SharedModule,
-  ]
+    DragDropModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class ModulesModule { }

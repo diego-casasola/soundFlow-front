@@ -6,3 +6,14 @@ export interface Prueba{
     resultado: string;
     desafio: Desafio;
 }
+
+export interface PruebaRes{
+    desafio: Desafio;
+    prueba_res: Respuesta[];
+}
+
+export interface Respuesta{
+    id: number;
+    respuesta: any;
+    pregunta: string;
+}

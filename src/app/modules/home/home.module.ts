@@ -29,6 +29,11 @@ import { Desafio16Component } from './pruebas/nivel4/desafio16/desafio16.compone
 import { Desafio17Component } from './pruebas/nivel4/desafio17/desafio17.component';
 import { Desafio18Component } from './pruebas/nivel4/desafio18/desafio18.component';
 import { Desafio19Component } from './pruebas/nivel4/desafio19/desafio19.component';
+import { MaterialModule } from 'src/app/material/material.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from 'src/app/auth/interceptor/auth.interceptor';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 
 @NgModule({
@@ -62,7 +67,18 @@ import { Desafio19Component } from './pruebas/nivel4/desafio19/desafio19.compone
     CommonModule,
     HomeRoutingModule,
     SharedModule,
-    FlexLayoutModule
-  ]
+    FlexLayoutModule,
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule,
+    DragDropModule
+  ],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
 })
 export class HomeModule { }

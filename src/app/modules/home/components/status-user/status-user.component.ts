@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { ThemePalette } from '@angular/material/core';
 import { ProgressBarMode } from '@angular/material/progress-bar';
 import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/services/auth.service';
 
 @Component({
@@ -9,7 +11,7 @@ import { AuthService } from 'src/app/auth/services/auth.service';
   templateUrl: './status-user.component.html',
   styleUrls: ['./status-user.component.scss']
 })
-export class StatusUserComponent implements OnInit {
+export class StatusUserComponent implements OnInit, OnChanges {
   color: ThemePalette = 'primary';
   modeEnergia: ProgressSpinnerMode = 'determinate';
 
@@ -20,6 +22,7 @@ export class StatusUserComponent implements OnInit {
 
   constructor(
     private authService: AuthService,
+    private route: Router,
   ) { }
 
   get user() {
@@ -30,9 +33,14 @@ export class StatusUserComponent implements OnInit {
     this.calcularEnergia();
     this.calcularColorEnergia();
     this.calcularPorcentajeXp();
+
   }
 
-  calcularEnergia(){
+  ngOnChanges(): void {
+
+  }
+
+  calcularEnergia() {
     if (this.user) {
       const energia = this.user.energia;
       const energiaMax = 20;

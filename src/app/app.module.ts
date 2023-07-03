@@ -10,6 +10,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MaterialModule } from './material/material.module';
 import { SharedModule } from './shared/shared.module';
 import { AuthInterceptor } from './auth/interceptor/auth.interceptor';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { AuthInterceptor } from './auth/interceptor/auth.interceptor';
     MatNativeDateModule,
     MatDatepickerModule,
     SharedModule,
+    DragDropModule
   ],
   providers: [
     {

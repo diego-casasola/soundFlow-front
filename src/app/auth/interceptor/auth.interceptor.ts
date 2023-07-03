@@ -19,6 +19,10 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
+    if (req.url.includes('/auth/user/')) {
+      // No interceptar la solicitud de registro, pasarla directamente
+      return next.handle(req);
+    }
     const authToken = this.authService.accessToken;
 
     const authReq = req.clone({

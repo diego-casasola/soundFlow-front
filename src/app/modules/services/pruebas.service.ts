@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Prueba } from 'src/app/shared/interfaces/prueba.interface';
+import { Prueba, Respuesta } from 'src/app/shared/interfaces/prueba.interface';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -17,5 +18,10 @@ export class PruebasService {
   getPruebas(id: number): Observable<Prueba[]> {
     const url = `${this.baseUrl}/game/prueba/${id}/get-pruebas-desafio/`;
     return this.httpClient.get<Prueba[]>(url);
+  }
+
+  verificarRespuestas(pruebaRes: any): Observable<any> {
+    const url = `${this.baseUrl}/game/prueba/respuesta-pruebaDesafio-user/`;
+    return this.httpClient.post<any>(url, pruebaRes);
   }
 }
