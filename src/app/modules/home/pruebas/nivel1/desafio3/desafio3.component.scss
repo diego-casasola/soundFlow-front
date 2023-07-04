@@ -1,0 +1,40 @@
+.container {
+    margin-top: 40px;
+}
+
+.image-row {
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+.image {
+    width: 200px;
+    height: auto;
+    margin-right: 10px;
+    float: left;
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+
+.answer-field {
+    margin-top: 10px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+.indicator {
+    font-size: 14px;
+    margin-top: 5px;
+}

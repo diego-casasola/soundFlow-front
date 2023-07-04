@@ -98,28 +98,24 @@ export class Desafio2Component implements OnInit {
 
   enviarRespuestas() {
     const formCopy = _.cloneDeep(this.formRespuesta);
+
     formCopy.value.prueba_res.forEach((prueba: any) => {
       const array = prueba.respuesta;
       prueba.respuesta = array.join(', ');
     });
-    console.log('formCopy');
-    console.log(formCopy.value);
-    console.log(this.respuestas().controls);
+
     this.pruebasService.verificarRespuestas(formCopy.value).subscribe(
       (res) => {
         this.respuesta = res['resultado']
-        console.log(this.respuesta);
         this.respuesta.forEach((item) => {
           item.respuesta = item.respuesta.split(', ');
         });
-        console.log(this.respuesta);
+
         const respuestasCorrectas = this.respuestas().controls.filter((respuestaCtrl) =>
           this.verificarRespuesta(respuestaCtrl)
         );
-        console.log(respuestasCorrectas.length);
-        console.log(this.respuestas().controls.length);
-        if (respuestasCorrectas.length === this.respuestas().controls.length) {
 
+        if (respuestasCorrectas.length === this.respuestas().controls.length) {
           setTimeout(() => {
             Swal.fire({
               title: '¡Felicidades!',
