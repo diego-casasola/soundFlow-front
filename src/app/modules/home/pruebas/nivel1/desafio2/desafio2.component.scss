@@ -79,3 +79,16 @@
 .example-box:hover {
     background-color: #bdbdbd;
 }
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+.indicator {
+    font-size: 14px;
+    margin-top: 5px;
+}

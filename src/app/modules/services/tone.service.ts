@@ -104,4 +104,9 @@ export class ToneService {
       time += Tone.Time(duration).toSeconds();
     });
   }
+
+  playTone(tone: string) {
+    const synth = new Tone.Synth().toDestination();
+    synth.triggerAttackRelease(tone, "8n");
+  }
 }

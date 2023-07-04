@@ -1,1 +1,26 @@
-<p>desafio5 works!</p>
+<div class="container" [formGroup]="formRespuesta">
+    <div class="row" formArrayName="prueba_res">
+        <div class="col-md-6" *ngFor="let prueba of respuestas().controls; let i = index">
+            <div class="card">
+                <div class="icono">
+                    <mat-icon class="icono-volume"
+                        (click)="reproducirNota(prueba.get('aux')?.value.sonido)">volume_up</mat-icon>
+                </div>
+                <div class="opciones">
+                    <div class="opcion" *ngFor="let opcion of prueba.get('aux')?.value.opciones; let j = index">
+                        <button class="opcion-button" [class.selected]="prueba.get('respuesta')?.value === opcion"
+                            (click)="seleccionarOpcion(prueba, opcion)">
+                            {{ opcion }}
+                        </button>
+                    </div>
+                </div>
+                <div *ngIf="submitted && prueba.get('respuesta')?.value && verificarRespuesta(prueba)"
+                    class="response-indicator correct">Correcta</div>
+                <div *ngIf="submitted && prueba.get('respuesta')?.value && !verificarRespuesta(prueba)"
+                    class="response-indicator incorrect">Incorrecta</div>
+            </div>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" type="submit" class="submit-button" (click)="enviarRespuestas()"
+        [disabled]="respuestas().invalid">Enviar respuestas</button>
+</div>

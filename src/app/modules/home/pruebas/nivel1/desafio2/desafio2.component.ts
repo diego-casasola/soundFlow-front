@@ -97,6 +97,7 @@ export class Desafio2Component implements OnInit {
   }
 
   enviarRespuestas() {
+    this.submitted = true;
     const formCopy = _.cloneDeep(this.formRespuesta);
 
     formCopy.value.prueba_res.forEach((prueba: any) => {

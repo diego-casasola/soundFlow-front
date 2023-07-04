@@ -63,6 +63,7 @@ export class Desafio3Component implements OnInit {
   }
 
   enviarRespuestas() {
+    this.submitted = true;
     const formCopy = _.cloneDeep(this.formRespuesta);
 
     this.pruebasService.verificarRespuestas(formCopy.value).subscribe(

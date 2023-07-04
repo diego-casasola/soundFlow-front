@@ -1,0 +1,54 @@
+.container {
+    margin-top: 40px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.opciones {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+.opciones .opcion img {
+    width: 130px;
+    height: 130px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.opciones .opcion img.selected {
+    border: 2px solid blue;
+}
+
+.icono {
+    display: flex;
+    justify-content: center;
+}
+
+.icono mat-icon {
+    margin-bottom: 10px;
+}
+
+.icono .icono-volume {
+    font-size: 50px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+.indicator {
+    font-size: 14px;
+    margin-top: 5px;
+}

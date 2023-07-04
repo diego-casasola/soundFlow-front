@@ -1,1 +1,63 @@
-<p>desafio7 works!</p>
+<div class="fullscreen-container">
+    <div [formGroup]="formRespuesta" class="full-height full-width">
+        <div formArrayName="prueba_res" class="full-height full-width">
+            <div class="mat-tab-group-wrapper">
+                <mat-tab-group mat-align-tabs="center" class="full-width">
+                    <div *ngFor="let prueba of respuestas().controls; let i = index" class="full-height full-width">
+                        <mat-tab label="{{prueba.get('pregunta')?.value}}" class="full-height full-width">
+
+                            <body>
+                                <div class="wrapper">
+                                    <header>
+                                        <h2>Arma la escala de {{prueba.get('pregunta')?.value}}</h2>
+                                        <div *ngIf="submitted && prueba.get('respuesta')?.value && verificarRespuesta(prueba)"
+                                            class="response-indicator correct">Correcta</div>
+                                        <div *ngIf="submitted && prueba.get('respuesta')?.value && !verificarRespuesta(prueba)"
+                                            class="response-indicator incorrect">Incorrecta</div>
+                                        <div>
+                                            <button class="btn btn-primary" (click)="limpiarNotas(i)">Limpar
+                                                Notas</button>
+                                        </div>
+                                    </header>
+                                    <ul class="piano-keys">
+                                        <li class="key white" (click)="insertarNota(i,'C4')"><span>Do</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'C#4')"><span>Do#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'D4')"><span>Re</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'D#4')"><span>Re#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'E4')"><span>Mi</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'F4')"><span>Fa</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'F#4')"><span>Fa#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'G4')"><span>Sol</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'G#4')"><span>Sol#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'A4')"><span>La</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'A#4')"><span>La#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'B4')"><span>Si</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'C5')"><span>Do</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'C#5')"><span>Do#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'D5')"><span>Re</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'D#5')"><span>Re#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'E5')"><span>Mi</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'F5')"><span>Fa</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'F#5')"><span>Fa#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'G5')"><span>Sol</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'G#5')"><span>Sol#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'A5')"><span>La</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'A#5')"><span>La#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'B5')"><span>Si</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'C6')"><span>Do</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'C#6')"><span>Do#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'D6')"><span>Re</span></li>
+                                        <li class="key black" (click)="insertarNota(i,'D#6')"><span>Re#</span></li>
+                                        <li class="key white" (click)="insertarNota(i,'E6')"><span>Mi</span></li>
+                                    </ul>
+                                </div>
+                            </body>
+                        </mat-tab>
+                    </div>
+                </mat-tab-group>
+            </div>
+        </div>
+        <!-- boton que ocupe todo el ancho -->
+        <div class="btn-send">
+            <button mat-raised-button color="primary" (click)="enviarRespuesta()">Enviar Respuesta</button>
+        </div>
