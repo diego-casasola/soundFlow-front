@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NivelService } from 'src/app/modules/services/nivel.service';
+import { PruebasService } from 'src/app/modules/services/pruebas.service';
 import { Nivel, NivelUser } from 'src/app/shared/interfaces/nivel.interface';
 
 @Component({
@@ -12,9 +13,12 @@ export class NivelesComponent implements OnInit {
   nivelesUser: Nivel[] = [];
   levels: NivelUser[] = [];
 
-  constructor(private nivelService: NivelService) { }
+  constructor(private nivelService: NivelService, 
+    private pruebasService: PruebasService,
+    ) { }
 
   async ngOnInit(): Promise<void> {
+    this.pruebasService.resetNeedEnergy();
     await this.getNiveles();
     await this.getNivelesUser();
     if (this.niveles.length > 0 && this.nivelesUser.length > 0) {

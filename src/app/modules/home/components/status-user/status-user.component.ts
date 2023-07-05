@@ -5,6 +5,8 @@ import { ProgressSpinnerMode } from '@angular/material/progress-spinner';
 import { NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from 'src/app/auth/services/auth.service';
+import { DesafioService } from 'src/app/modules/services/desafio.service';
+import { PruebasService } from 'src/app/modules/services/pruebas.service';
 
 @Component({
   selector: 'app-status-user',
@@ -17,12 +19,15 @@ export class StatusUserComponent implements OnInit, OnChanges {
 
   modeXp: ProgressBarMode = 'determinate';
   maxXp: number = 2900;
+  challengesList: any[] = [];
 
 
 
   constructor(
     private authService: AuthService,
     private route: Router,
+    private desafioService: DesafioService,
+    private pruebasService: PruebasService,
   ) { }
 
   get user() {
@@ -33,11 +38,33 @@ export class StatusUserComponent implements OnInit, OnChanges {
     this.calcularEnergia();
     this.calcularColorEnergia();
     this.calcularPorcentajeXp();
-
+    this.getDesafiosSuccess();
+    this.pruebasService.resetNeedEnergy();
   }
 
   ngOnChanges(): void {
+    
+  }
 
+  getDesafiosSuccess() {
+    this.desafioService.getDesafiosSuccess().subscribe(
+      (res) => {
+        this.challengesList = res.desafios;
+        console.log(this.challengesList);
+      },
+      (err) => {
+        console.log(err);
+      }
+    )
+  }
+
+  regenerateEnergia() {
+    const randomIndex = Math.floor(Math.random() * this.challengesList.length);
+    const challengeId = this.challengesList[randomIndex];
+
+    this.pruebasService.setNeedEnergy(true);
+
+    this.route.navigate([`/home/niveles/${challengeId.nivel_id}/desafios/${challengeId.desafio_id}`]);
   }
 
   calcularEnergia() {

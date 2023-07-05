@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/auth/services/auth.service';
 import { DesafioService } from 'src/app/modules/services/desafio.service';
+import { PruebasService } from 'src/app/modules/services/pruebas.service';
 import { Desafio, DesafioUser } from 'src/app/shared/interfaces/desafio.interface';
 
 @Component({
@@ -18,9 +19,11 @@ export class DesafiosComponent implements OnInit {
   constructor(
     private desafioService: DesafioService,
     private activatedRoute: ActivatedRoute,
+    private pruebasService: PruebasService,
   ) { }
 
   async ngOnInit(): Promise<void> {
+    this.pruebasService.resetNeedEnergy();
     this.nivelId = this.activatedRoute.snapshot.params.id;
     await this.getDesafios();
     await this.getDesafiosUser();

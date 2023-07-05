@@ -21,7 +21,24 @@ export class PruebasService {
   }
 
   verificarRespuestas(pruebaRes: any): Observable<any> {
+    // añadir a pruebaRes la variable needEnergy
+    pruebaRes.needEnergy = this.needEnergy;
+    console.log(pruebaRes);
     const url = `${this.baseUrl}/game/prueba/respuesta-pruebaDesafio-user/`;
     return this.httpClient.post<any>(url, pruebaRes);
+  }
+
+  private needEnergy = false;
+
+  setNeedEnergy(value: boolean): void {
+    this.needEnergy = value;
+  }
+
+  getNeedEnergy(): boolean {
+    return this.needEnergy;
+  }
+
+  resetNeedEnergy(): void {
+    this.needEnergy = false;
   }
 }

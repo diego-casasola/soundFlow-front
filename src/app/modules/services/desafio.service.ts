@@ -23,4 +23,9 @@ export class DesafioService {
     const url = `${this.baseUrl}/game/desafio/${nivelId}/get_desafios_habilitados_user/`;
     return this.http.get<Desafio[]>(url);
   }
+
+  getDesafiosSuccess() {
+    const url = `${this.baseUrl}/game/user_nivel/get-desafios-user/`;
+    return this.http.get<any>(url);
+  }
 }
