@@ -80,23 +80,23 @@ const routes: Routes = [
       },
       {
         path:'29',
-        component: Desafio11Component
+        component: Desafio6Component
       },
       {
         path:'30',
-        component: Desafio12Component
+        component: Desafio7Component
       },
       {
         path:'31',
-        component: Desafio13Component
+        component: Desafio8Component
       },
       {
         path:'32',
-        component: Desafio14Component
+        component: Desafio9Component
       },
       {
         path:'33',
-        component: Desafio15Component
+        component: Desafio10Component
       },
       {
         path:'34',

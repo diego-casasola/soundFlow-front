@@ -65,14 +65,14 @@ export class Desafio6Component implements OnInit {
 
     formCopy.value.prueba_res.forEach((prueba: any) => {
       const array = prueba.respuesta;
-      prueba.respuesta = array.join(', ');
+      prueba.respuesta = array.join(',');
     });
 
     this.pruebasService.verificarRespuestas(formCopy.value).subscribe(
       (res) => {
         this.respuesta = res['resultado']
         this.respuesta.forEach((item) => {
-          item.respuesta = item.respuesta.split(', ');
+          item.respuesta = item.respuesta.split(',');
         });
 
         const respuestasCorrectas = this.respuestas().controls.filter((respuestaCtrl) =>
@@ -106,9 +106,14 @@ export class Desafio6Component implements OnInit {
     );
   }
 
+  reproducirEscala(nota: string) {
+    console.log(nota);
+    this.toneService.reproducirEscala(nota);
+  }
+
   reproducirNota(nota: string) {
     console.log(nota);
-    this.toneService.reproducirNota(nota);
+    this.toneService.reproducirNota2(nota);
   }
 
   mapNotas(nota: string) {
@@ -125,6 +130,13 @@ export class Desafio6Component implements OnInit {
       'son_fa_sost': 'FA#',
       'son_sol_sost': 'SOL#',
       'son_la_sost': 'LA#',
+      'son_do_me': 'DOm',
+      'son_re_me': 'REm',
+      'son_mi_me': 'MIm',
+      'son_fa_me': 'FAm',
+      'son_sol_me': 'SOLm',
+      'son_la_me': 'LAm',
+      'son_si_me': 'SIm',
     };
     return notas[nota];
   }
@@ -132,6 +144,7 @@ export class Desafio6Component implements OnInit {
   drop(event: CdkDragDrop<string[]>, respuesta: any, pos: number) {
     moveItemInArray(respuesta, event.previousIndex, event.currentIndex);
     this.respuestas().controls[pos].get('respuesta')?.setValue(respuesta);
+    console.log(this.respuestas().controls[pos].get('respuesta')?.value);
   }
 
   

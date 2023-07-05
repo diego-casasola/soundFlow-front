@@ -1,1 +1,46 @@
-<p>desafio10 works!</p>
+<div class="fullscreen-container">
+    <div [formGroup]="formRespuesta" class="full-height full-width">
+        <div formArrayName="prueba_res" class="full-height full-width">
+            <div class="mat-tab-group-wrapper">
+                <mat-tab-group mat-align-tabs="center" class="full-width">
+                    <div *ngFor="let prueba of respuestas().controls; let i = index" class="full-height full-width">
+                        <mat-tab label="{{prueba.get('nota')?.value}}" class="full-height full-width">
+                            <div class="mt-4" cdkDropListGroup>
+                                <div class="example-container">
+                                    <h2>Completa la escala de {{prueba.get('nota')?.value}}</h2>
+                                    <div cdkDropList cdkDropListOrientation="horizontal"
+                                        [cdkDropListData]="prueba.get('incompleto')?.value" class="example-list"
+                                        (cdkDropListDropped)="drop($event)">
+                                        <div class="example-box" *ngFor="let item of prueba.get('incompleto')?.value"
+                                            cdkDrag>{{item}}</div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 example-container">
+                                    <h2>Opciones</h2>
+                                    <div class="notes-container" cdkDropList
+                                        [cdkDropListData]="prueba.get('opciones')?.value"
+                                        (cdkDropListDropped)="drop($event)">
+                                        <div class="notes" *ngFor="let opciones of prueba.get('opciones')?.value"
+                                            cdkDrag>{{opciones}}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="isResuelto">
+                                <div *ngIf="submitted && verificarRespuesta(prueba)" class="response-indicator correct">
+                                    Correcta
+                                </div>
+                                <div *ngIf="submitted && !verificarRespuesta(prueba)"
+                                    class="response-indicator incorrect">
+                                    Incorrecta</div>
+                            </div>
+                        </mat-tab>
+                    </div>
+                </mat-tab-group>
+            </div>
+        </div>
+        <!-- boton que ocupe todo el ancho -->
+        <div class="btn-send">
+            <button mat-raised-button color="primary" (click)="enviarRespuesta()">Enviar Respuesta</button>
+        </div>
+    </div>
+</div>

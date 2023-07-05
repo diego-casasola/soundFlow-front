@@ -5,6 +5,7 @@
                 <mat-tab-group mat-align-tabs="center" class="full-width">
                     <div *ngFor="let prueba of respuestas().controls; let i = index" class="full-height full-width">
                         <mat-tab label="{{prueba.get('pregunta')?.value}}" class="full-height full-width">
+
                             <body>
                                 <div class="wrapper">
                                     <header>
@@ -49,7 +50,8 @@
                                         <li class="key black" (click)="insertarNota(i,'D#6')"><span>Re#</span></li>
                                         <li class="key white" (click)="insertarNota(i,'E6')"><span>Mi</span></li>
                                     </ul>
-                                    <span class="tonosSemitonos">Respuesta: {{toneSemitoneConvert(prueba.get('array')?.value)}}</span>
+                                    <span class="tonosSemitonos">Respuesta:
+                                        {{toneSemitoneConvert(prueba.get('array')?.value)}}</span>
                                 </div>
                             </body>
                         </mat-tab>
@@ -61,3 +63,5 @@
         <div class="btn-send">
             <button mat-raised-button color="primary" (click)="enviarRespuesta()">Enviar Respuesta</button>
         </div>
+    </div>
+</div>

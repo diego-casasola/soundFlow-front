@@ -105,6 +105,7 @@ export class Desafio8Component implements OnInit {
   }
   
   reproducirEscala(nota: string) {
+    console.log(nota);
     this.toneService.reproducirEscala(nota);
   }
 

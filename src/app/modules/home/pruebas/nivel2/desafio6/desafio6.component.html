@@ -5,7 +5,7 @@
                 <div class="aux">
                     <div class="escala-container">
                         Escala de: <span class="escala">{{ mapNotas(item.get('aux')?.value.escala) }}</span><mat-icon
-                            (click)="reproducirNota(item.get('aux')?.value.escala)">volume_up</mat-icon>
+                            (click)="reproducirEscala(item.get('aux')?.value.escala)">volume_up</mat-icon>
                     </div>
                     <div cdkDropList cdkDropListOrientation="horizontal" class="example-list"
                         (cdkDropListDropped)="drop($event, item.get('aux')?.value.desordenadas, i)">
