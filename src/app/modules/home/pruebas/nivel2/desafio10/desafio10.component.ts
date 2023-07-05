@@ -81,18 +81,18 @@ export class Desafio10Component implements OnInit {
         );
 
         console.log(respuestasCorrectas);
-        let trofeo: any;
-        this.premiosService.getTrofeoInfo(res.trofeoDesafio.trofeo).subscribe(
-          (res) => {
-            trofeo = res;
-          },
-          (err) => {
-            console.log(err);
-          } 
-        );
-
-
+        
+        
         if (respuestasCorrectas.length === this.respuestas().controls.length && res.trofeoDesafio != null){
+          let trofeo: any;
+          this.premiosService.getTrofeoInfo(res.trofeoDesafio.trofeo).subscribe(
+            (res) => {
+              trofeo = res;
+            },
+            (err) => {
+              console.log(err);
+            } 
+          );
           setTimeout(() => {
             Swal.fire({
               title: '¡Felicidades!',

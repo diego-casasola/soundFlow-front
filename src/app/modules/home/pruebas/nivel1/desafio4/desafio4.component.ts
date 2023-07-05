@@ -71,22 +71,21 @@ export class Desafio4Component implements OnInit {
         const respuestasCorrectas = this.respuestas().controls.filter((respuestaCtrl) =>
           this.verificarRespuesta(respuestaCtrl)
         );
-        let trofeo: any;
-        this.premiosService.getTrofeoInfo(res.trofeoDesafio.trofeo).subscribe(
-          (res) => {
-            trofeo = res;
-          },
-          (err) => {
-            console.log(err);
-          } 
-        );
 
-
-        if (respuestasCorrectas.length === this.respuestas().controls.length && res.trofeoDesafio != null){
+        if (respuestasCorrectas.length === this.respuestas().controls.length && res.trofeoDesafio != null) {
+          let trofeo: any;
+          this.premiosService.getTrofeoInfo(res.trofeoDesafio.trofeo).subscribe(
+            (res) => {
+              trofeo = res;
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
           setTimeout(() => {
             Swal.fire({
               title: '¡Felicidades!',
-              
+
               html: 'Todas las respuestas son correctas <br> <strong>Has ganado un trofeo</strong> <br> <img src="' + trofeo.imagen + '" alt="trofeo" width="80px" height="80px">',
               icon: 'success',
               showConfirmButton: false,
@@ -94,7 +93,7 @@ export class Desafio4Component implements OnInit {
             }).then(() => {
               window.location.href = '/home/niveles';
             });
-          } , 2000);
+          }, 2000);
         }
 
         if (respuestasCorrectas.length === this.respuestas().controls.length && res.trofeoDesafio === null) {
@@ -129,7 +128,7 @@ export class Desafio4Component implements OnInit {
   seleccionarOpcion(prueba: AbstractControl, opcionIndex: any) {
     prueba.get('respuesta')?.setValue(opcionIndex);
   }
-  
+
 
   reproducirNota(nota: string) {
     this.toneService.reproducirNota(nota);
