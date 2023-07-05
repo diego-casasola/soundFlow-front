@@ -22,6 +22,7 @@ import { Desafio16Component } from './pruebas/nivel4/desafio16/desafio16.compone
 import { Desafio17Component } from './pruebas/nivel4/desafio17/desafio17.component';
 import { Desafio18Component } from './pruebas/nivel4/desafio18/desafio18.component';
 import { Desafio19Component } from './pruebas/nivel4/desafio19/desafio19.component';
+import { DashboardUsuarioComponent } from './game/dashboard-usuario/dashboard-usuario.component';
 
 const routes: Routes = [
   {
@@ -33,6 +34,11 @@ const routes: Routes = [
     path:'niveles/:id/desafios',
     canActivate: [PermissionGuard],
     component: DesafiosComponent
+  },
+  {
+    path:'dashboard',
+    canActivate: [PermissionGuard],
+    component: DashboardUsuarioComponent
   },
   {
     path:'niveles/:id/desafios',

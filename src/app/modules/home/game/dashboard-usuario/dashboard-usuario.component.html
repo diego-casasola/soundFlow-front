@@ -1,0 +1,11 @@
+<div class="dashboard">
+    <div class="listaTrofeos">
+        <h2>Trofeos</h2>
+        <div class="trofeos-container">
+            <div *ngFor="let item of listaTrofeos" class="trofeo">
+                <img src="http://127.0.0.1:8000{{item.imagen}}" alt="">
+                <p>{{item.nombre}}</p>
+            </div>
+        </div>
+    </div>
+</div>

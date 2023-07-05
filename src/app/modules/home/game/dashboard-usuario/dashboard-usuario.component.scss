@@ -1,0 +1,51 @@
+.dashboard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background-color: #f2f2f2;
+}
+
+.listaTrofeos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.listaTrofeos h2 {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.trofeos-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.trofeo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.trofeo img {
+    width: 230px;
+    height: 230px;
+    margin-bottom: 10px;
+}
+
+.trofeo p {
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}

@@ -34,6 +34,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from 'src/app/auth/interceptor/auth.interceptor';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { DashboardUsuarioComponent } from './game/dashboard-usuario/dashboard-usuario.component';
 
 
 @NgModule({
@@ -62,6 +63,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop';
     Desafio17Component,
     Desafio18Component,
     Desafio19Component,
+    DashboardUsuarioComponent,
   ],
   imports: [
     CommonModule,

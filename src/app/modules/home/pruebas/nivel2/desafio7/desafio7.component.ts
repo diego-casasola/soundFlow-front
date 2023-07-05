@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import * as _ from 'lodash';
+import { PremiosService } from 'src/app/modules/services/premios.service';
 import { PruebasService } from 'src/app/modules/services/pruebas.service';
 import { ToneService } from 'src/app/modules/services/tone.service';
 import { Prueba, Respuesta } from 'src/app/shared/interfaces/prueba.interface';
@@ -35,6 +36,7 @@ export class Desafio7Component implements OnInit {
     private route: Router,
     private fb: FormBuilder,
     private toneService: ToneService,
+    private premiosService: PremiosService,
   ) { }
 
   ngOnInit(): void {
@@ -75,8 +77,33 @@ export class Desafio7Component implements OnInit {
         );
 
         console.log(respuestasCorrectas);
+        let trofeo: any;
+        this.premiosService.getTrofeoInfo(res.trofeoDesafio.trofeo).subscribe(
+          (res) => {
+            trofeo = res;
+          },
+          (err) => {
+            console.log(err);
+          } 
+        );
 
-        if (respuestasCorrectas.length === this.respuestas().controls.length) {
+
+        if (respuestasCorrectas.length === this.respuestas().controls.length && res.trofeoDesafio != null){
+          setTimeout(() => {
+            Swal.fire({
+              title: '¡Felicidades!',
+              
+              html: 'Todas las respuestas son correctas <br> <strong>Has ganado un trofeo</strong> <br> <img src="' + trofeo.imagen + '" alt="trofeo" width="80px" height="80px">',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 4000
+            }).then(() => {
+              window.location.href = '/home/niveles';
+            });
+          } , 2000);
+        }
+
+        if (respuestasCorrectas.length === this.respuestas().controls.length && res.trofeoDesafio === null) {
           setTimeout(() => {
             Swal.fire({
               title: '¡Felicidades!',
