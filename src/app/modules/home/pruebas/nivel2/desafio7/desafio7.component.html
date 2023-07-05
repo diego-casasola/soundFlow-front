@@ -10,9 +10,9 @@
                                 <div class="wrapper">
                                     <header>
                                         <h2>Arma la escala de {{prueba.get('pregunta')?.value}}</h2>
-                                        <div *ngIf="submitted && prueba.get('respuesta')?.value && verificarRespuesta(prueba)"
+                                        <div *ngIf="submitted && verificarRespuesta(prueba)"
                                             class="response-indicator correct">Correcta</div>
-                                        <div *ngIf="submitted && prueba.get('respuesta')?.value && !verificarRespuesta(prueba)"
+                                        <div *ngIf="submitted && !verificarRespuesta(prueba)"
                                             class="response-indicator incorrect">Incorrecta</div>
                                         <div>
                                             <button class="btn btn-primary" (click)="limpiarNotas(i)">Limpar

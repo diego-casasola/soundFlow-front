@@ -62,17 +62,14 @@ export class Desafio7Component implements OnInit {
 
   enviarRespuesta() {
     this.submitted = true;
-    const formCopy = _.cloneDeep(this.formRespuesta);
-
-    formCopy.value.prueba_res.forEach((prueba: any) => {
+    this.formRespuesta.value.prueba_res.forEach((prueba: any) => {
       prueba.respuesta = this.toneSemitoneConvert(prueba.array);
       prueba.respuesta = prueba.respuesta.join(',');
     });
 
-    this.pruebasService.verificarRespuestas(formCopy.value).subscribe(
+    this.pruebasService.verificarRespuestas(this.formRespuesta.value).subscribe(
       (res) => {
         this.respuesta = res['resultado'];
-
         const respuestasCorrectas = this.respuestas().controls.filter(
           (item) => this.verificarRespuesta(item)
         );
@@ -99,14 +96,11 @@ export class Desafio7Component implements OnInit {
   }
 
   verificarRespuesta(respuestaCtrl: AbstractControl): boolean {
-    if (!respuestaCtrl.get('respuesta')?.value) {
-      return false;
-    }
+    // debugger;
     
     const respuesta = respuestaCtrl.value;
-    console.log(respuesta);
     return this.respuesta.some(
-      (item) =>  item.id === respuesta.id && item.respuesta === respuesta.respuesta
+      (item) =>  item.id === respuesta.id
     );
   }
 
