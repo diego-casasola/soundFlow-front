@@ -108,7 +108,7 @@ const routes: Routes = [
       },
       {
         path:'36',
-        component: Desafio18Component
+        component: Desafio8Component
       },
       {
         path:'37',

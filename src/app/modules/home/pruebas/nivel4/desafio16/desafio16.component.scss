@@ -1,0 +1,79 @@
+.container {
+    margin-top: 40px;
+}
+
+.card {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.image {
+    width: 200px;
+    height: auto;
+    margin-right: 10px;
+    float: left;
+}
+
+.opciones {
+    display: flex;
+    align-items: center;   
+    justify-content: space-around;
+    // maximo 3 columnas
+    flex-wrap: wrap;
+}
+
+.opciones .opcion-button {
+    margin-top: 20px;
+}
+    
+
+.opcion-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: #e0e0e0;
+    color: #333;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    text-transform: uppercase;
+}
+
+.opcion-button:hover {
+    background-color: #ccc;
+}
+
+.opcion-button.selected {
+    background-color: #2196f3;
+    color: #fff;
+}
+
+.icono {
+    display: flex;
+    justify-content: center;
+}
+
+.icono mat-icon {
+    margin-bottom: 10px;
+}
+
+.icono .icono-volume {
+    font-size: 50px;
+}
+
+.correct {
+    color: green;
+}
+
+.incorrect {
+    color: red;
+}
+
+.indicator {
+    font-size: 14px;
+    margin-top: 5px;
+}

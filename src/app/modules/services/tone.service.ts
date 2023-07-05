@@ -126,7 +126,11 @@ export class ToneService {
       'son_sol_me': ["G4", "A4", "Bb4", "C5", "D5", "Eb5", "F5", "G5"],
       'son_la_me': ["A4", "B4", "C5", "D5", "E5", "F5", "G5", "A5"],
       'son_si_me': ["B4", "C#5", "D5", "E5", "F#5", "G5", "A5", "B5"],
-      
+      'sound_sol_sost': ["G#4", "A#4", "B4", "C#5", "D#5", "E5", "F#5", "G#5"],
+      'sound_la_sost': ["A#4", "C5", "C#5", "D#5", "F5", "F#5", "G#5", "A#5"],
+      'sound_do_sost': ["C#4", "D#4", "E4", "F#4", "G#4", "A#4", "B4", "C#5"],
+      'sound_re_sost': ["D#4", "F4", "F#4", "G#4", "A#4", "B4", "C#5", "D#5"],
+      'sound_fa_sost': ["F#4", "G#4", "A4", "B4", "C#5", "D#5", "E5", "F#5"],
     };
     const duration = "8n";
     let time = Tone.now();

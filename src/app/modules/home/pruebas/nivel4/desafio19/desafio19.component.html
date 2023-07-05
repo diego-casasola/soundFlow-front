@@ -1,1 +1,27 @@
-<p>desafio19 works!</p>
+<div class="container" [formGroup]="formRespuesta">
+    <div formArrayName="prueba_res">
+        <div *ngFor="let prueba of respuestas().controls; let i = index">
+            <div class="card">
+                <div class="opciones">
+                    <div class="opcion" *ngFor="let opcion of prueba.get('aux')?.value; let j = index">
+                        <!-- buttons -->
+                        <button class="opcion-button" [class.selected]="prueba.get('respuesta')?.value?.includes(opcion)"
+                            (click)="toggleOpcion(prueba, opcion)">
+                            {{ opcion }}
+                        </button>
+                        <!-- <img src="../../../../../../assets/penta/{{ opcion }}.png" class="opcion-button image"
+                             [class.selected]="prueba.get('respuesta')?.value?.includes(opcion)"
+                             (click)="toggleOpcion(prueba, opcion)"> -->
+                      </div>
+                      
+                </div>
+                <div *ngIf="submitted &&  verificarRespuesta(prueba)"
+                    class="response-indicator correct">Correcta</div>
+                <div *ngIf="submitted && !verificarRespuesta(prueba)"
+                    class="response-indicator incorrect">Incorrecta</div>
+            </div>
+        </div>
+    </div>
+    <button mat-raised-button color="primary" type="submit" class="submit-button" (click)="enviarRespuestas()"
+        [disabled]="respuestas().invalid">Enviar respuestas</button>
+</div>
