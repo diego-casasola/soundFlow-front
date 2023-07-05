@@ -85,6 +85,7 @@ export class ToneService {
     synth.triggerAttackRelease(notas[nota], "8n");
   }
 
+
   reproducirEscala(escala: string) {
     const synth = new Tone.Synth().toDestination();
     const escalas: { [key: string]: string[] } = {

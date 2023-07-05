@@ -20,6 +20,10 @@
                     <p class="energy-text">Energia: <strong>{{user.energia}}</strong></p>
                 </div>
             </div>
+            <div class="get-energia">
+                <button mat-raised-button color="primary" type="submit" class="submit-button"
+                    (click)="''" [disabled]="user.energia >= 20">Obtener Energia</button>
+            </div>
         </div>
     </mat-card-content>
 </mat-card>
