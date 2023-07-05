@@ -3,11 +3,12 @@
         <div class="col-md-6" *ngFor="let prueba of respuestas().controls; let i = index">
             <div class="card">
                 <div class="icono">
-                    <mat-icon class="icono-volume">volume_up</mat-icon>
+                    Escala de {{ prueba.get('nota')?.value }}
                 </div>
                 <div class="opciones">
-                    <div class="opcion" *ngFor="let opcion of prueba.get('aux')?.value.opciones; let j = index">
-                        <button class="opcion-button" [class.selected]="prueba.get('respuesta')?.value === opcion">
+                    <div class="opcion" *ngFor="let opcion of prueba.get('aux')?.value; let j = index">
+                        <button class="opcion-button" [class.selected]="prueba.get('respuesta')?.value === opcion"
+                            (click)="seleccionarOpcion(prueba, opcion)">
                             {{ opcion }}
                         </button>
                     </div>

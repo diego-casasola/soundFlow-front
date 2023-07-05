@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormArray, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import * as _ from 'lodash';
 import { PruebasService } from 'src/app/modules/services/pruebas.service';
 import { ToneService } from 'src/app/modules/services/tone.service';
 import { Respuesta, Prueba } from 'src/app/shared/interfaces/prueba.interface';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-desafio9',
@@ -44,13 +46,17 @@ export class Desafio9Component implements OnInit {
     this.pruebasService.getPruebas(parseInt(this.desafioId)).subscribe(
       (res) => {
         res.forEach((prueba: Prueba) => {
+          const datosLista: string[] = prueba.datos.split(',');
+          const noteOptions: string[] = [...datosLista].sort(() => Math.random() - 0.5);
           this.respuestas().push(this.fb.group({
             id: [prueba.id],
             pregunta: [prueba.datos],
             respuesta: ['', Validators.required],
-            array: this.fb.array([])
+            nota: [datosLista[0]],
+            aux: [noteOptions],
           }));
         });
+        console.log(this.respuestas().value);
       },
       (err) => {
         console.log(err);
@@ -59,7 +65,34 @@ export class Desafio9Component implements OnInit {
   }
 
   enviarRespuestas() {
+    this.submitted = true;
+    const formCopy = _.cloneDeep(this.formRespuesta);
 
+    this.pruebasService.verificarRespuestas(formCopy.value).subscribe(
+      (res) => {
+        this.respuesta = res['resultado'];
+
+        const respuestasCorrectas = this.respuestas().controls.filter((respuestaCtrl) =>
+          this.verificarRespuesta(respuestaCtrl)
+        );
+
+        if (respuestasCorrectas.length === this.respuestas().controls.length) {
+          setTimeout(() => {
+            Swal.fire({
+              title: '¡Felicidades!',
+              text: 'Todas las respuestas son correctas',
+              icon: 'success',
+              showConfirmButton: false,
+              timer: 2000
+            }).then(() => {
+              window.location.href = '/home/niveles';
+            });
+          }, 2000);
+        }
+      },
+      (err) => {
+        console.log(err);
+      });
   }
 
   verificarRespuesta(respuestaCtrl: AbstractControl): boolean {
@@ -69,6 +102,11 @@ export class Desafio9Component implements OnInit {
     return this.respuesta.some(
       (item) =>  item.id === respuesta.id
     );
+  }
+
+  seleccionarOpcion(prueba: AbstractControl, opcionIndex: any) {
+    console.log(opcionIndex);
+    prueba.get('respuesta')?.setValue(opcionIndex);
   }
 
 }
